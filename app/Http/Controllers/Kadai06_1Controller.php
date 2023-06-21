@@ -17,7 +17,7 @@ class Kadai06_1Controller extends Controller
         //
         //$articles = Article::get();
 
-        $articles = Article::paginate(10);
+        $articles = Article::orderBy('created_at','desc')->paginate(10);
 
         return view("kadai06_1", compact("articles"));
     }
