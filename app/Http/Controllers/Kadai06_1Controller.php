@@ -52,6 +52,8 @@ class Kadai06_1Controller extends Controller
     public function show($id)
     {
         //
+        $article = Article::find($id);
+        return view("kadai07_1",compact("article"));
     }
 
     /**

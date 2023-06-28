@@ -14,7 +14,7 @@
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-10">
             <article
                 class="row-span-2 bg-white hover:bg-white rounded-md shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-                <a href="#" class="block w-full h-full">
+                <a href="{{route("kadai06_1.show",$article->id)}}" class="block w-full h-full">
                     <h3>{{ $article->title }}</h3>
                     <p> <time datatime="{{ $article->created_at }}">{{ $article->created_at }}</time></p>
                 </a>
