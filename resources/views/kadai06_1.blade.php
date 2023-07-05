@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="flex justify-end mb-10">
-        <a href="#" class="text-white text-center leading-10 bg-gray-500 px-10 hover:bg-white-400 rounded-md">新規投稿</a>
+        <a href="{{route("kadai06_1.create")}}" class="text-white text-center leading-10 bg-gray-500 px-10 hover:bg-white-400 rounded-md">新規投稿</a>
     </div>
 
 
