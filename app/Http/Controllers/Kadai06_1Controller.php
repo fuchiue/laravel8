@@ -76,6 +76,8 @@ class Kadai06_1Controller extends Controller
     public function edit($id)
     {
         //
+        $article = Article::find($id);
+        return view("kadai09_1",compact("article"));
     }
 
     /**
@@ -88,6 +90,16 @@ class Kadai06_1Controller extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->session()->regenerateToken();
+        $articleDao = new Article();
+        $article = $articleDao->find($id);
+        $this->validate($request, $articleDao::$rules, $articleDao::$messages);
+        $article->title = $request->input("title");
+        $article->body = $request->input("body");
+        DB::transaction(function () use ($article) {
+            $article->save();
+        });
+        return redirect()->route("kadai06_1.show", $article->id);
     }
 
     /**
@@ -99,5 +111,10 @@ class Kadai06_1Controller extends Controller
     public function destroy($id)
     {
         //
+        $articleDao = new Article();
+        DB::transaction(function () use ($articleDao, $id) {
+            $articleDao->destroy($id);
+        });
+        return redirect()->route("kadai06_1.index");
     }
 }
